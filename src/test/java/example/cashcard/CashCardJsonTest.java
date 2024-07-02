@@ -46,11 +46,13 @@ public class CashCardJsonTest {
     @Test
     public void cashCardDeserializationTest() throws IOException {
         String expected =
-                "{" +
-                "    \"id\": 99," +
-                "    \"amount\": 123.45," +
-                "    \"owner\": \"sarah1\"" +
-                "}";
+                """
+                {\
+                    "id": 99,\
+                    "amount": 123.45,\
+                    "owner": "sarah1"\
+                }\
+                """;
         assertThat(json.parse(expected))
                 .isEqualTo(new CashCard(99L, 123.45, "sarah1"));
         assertThat(json.parseObject(expected).getId()).isEqualTo(99L);
@@ -65,11 +67,13 @@ public class CashCardJsonTest {
     @Test
     void cashCardListDeserializationTest() throws IOException {
         String expected =
-                "[" +
-                "     {\"id\": 99, \"amount\": 123.45 , \"owner\": \"sarah1\"}," +
-                "     {\"id\": 100, \"amount\": 1.00 , \"owner\": \"sarah1\"}," +
-                "     {\"id\": 101, \"amount\": 150.00, \"owner\": \"sarah1\"}" +
-                "]";
+                """
+                [\
+                     {"id": 99, "amount": 123.45 , "owner": "sarah1"},\
+                     {"id": 100, "amount": 1.00 , "owner": "sarah1"},\
+                     {"id": 101, "amount": 150.00, "owner": "sarah1"}\
+                ]\
+                """;
         assertThat(jsonList.parse(expected)).isEqualTo(cashCards);
     }
 }
